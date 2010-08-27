@@ -1,4 +1,21 @@
 <?php
+
+global $gBitSystem;
+
+$gBitSystem->registerPackageInfo( GEOSERVER_PKG_NAME, array(
+	'description' => "This package provides hooks between bitweaver and various geoserver services.",
+) );
+
+// Requirements
+$gBitSystem->registerRequirements( GEOSERVER_PKG_NAME, array(
+	'liberty' => array( 'min' => '2.1.4' ),
+));
+
+
+// Install process
+global $gBitInstaller;
+if( is_object( $gBitInstaller ) ){
+
 $tables = array(
 	'geoserver_tilelayers_meta' => "
 		tilelayer_id I4 NOTNULL,
@@ -13,15 +30,9 @@ $tables = array(
 	",
 );
 
-global $gBitInstaller;
-
 foreach( array_keys( $tables ) AS $tableName ) {
 	$gBitInstaller->registerSchemaTable( GEOSERVER_PKG_NAME, $tableName, $tables[$tableName] );
 }
-
-$gBitInstaller->registerPackageInfo( GEOSERVER_PKG_NAME, array(
-	'description' => "This package provides hooks between bitweaver and various geoserver services.",
-) );
 
 // ### Sequences
 $sequences = array (
@@ -29,7 +40,4 @@ $sequences = array (
 );
 $gBitInstaller->registerSchemaSequences( GEOSERVER_PKG_NAME, $sequences );
 
-// Requirements
-$gBitInstaller->registerRequirements( GEOSERVER_PKG_NAME, array(
-	'liberty' => array( 'min' => '2.1.4' ),
-));
+}
