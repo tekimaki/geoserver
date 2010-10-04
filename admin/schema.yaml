@@ -1,0 +1,30 @@
+---
+geoserver: 
+  version: 0.0.0
+  required: false
+  requirements: 
+    liberty: 
+      min: 2.1.4
+  description: >
+    This package provides hooks between bitweaver and various geoserver services.
+  license: 
+    name: LGPL
+    description: Licensed under the GNU LESSER GENERAL PUBLIC LICENSE.
+    url: http://www.gnu.org/copyleft/lesser.html 
+  homeable: false
+  tables: 
+    geoserver_tilelayers_meta: |
+      
+      tilelayer_id I4 NOTNULL,
+      theme_id I4,
+      datakey X
+      CONSTRAINT ', CONSTRAINT `geoserver_tl_meta_ref` FOREIGN KEY (`tilelayer_id`) REFERENCES `gmaps_tilelayers`( `tilelayer_id` )'
+      
+    geoserver_tilelayers_themes: |
+      
+      theme_id I4 PRIMARY,
+      theme_title C(64)
+      
+  sequences: 
+    geoserver_tl_theme_id_seq: 
+      start: 1
