@@ -33,7 +33,7 @@
 					</td></tr>
 					{/foreach}
 				</table>
-				<div class="row submit">
+				<div class="buttonHolder row submit">
 					<input type="submit" name="batch_submit" value="{tr}Submit{/tr}" />
 				</div>
 			{/legend}
@@ -61,7 +61,7 @@
 			</div>
 		{/if}
 
-		<div class="row submit">
+		<div class="buttonHolder row submit">
 			<input type="submit" name="themes_submit" value="{tr}Submit{/tr}" />
 		</div>
 		{/form}
@@ -87,7 +87,7 @@
 					{/forminput}
 				</div>
 
-				<div class="row submit">
+				<div class="buttonHolder row submit">
 					<input type="submit" name="batch_submit" value="{tr}Submit{/tr}" />
 				</div>
 			{/form}
